@@ -51,6 +51,17 @@ public class ExamenControllerTest {
 
     }
 
+    @Test
+    void testNavitageError(){
+        Model model = new ExtendedModelMap();
+        String route = "error";
+        String navigate = controller.navigate(route, model);
+        assertEquals("error", navigate);
+
+        assertNotNull(model.getAttribute("examen"));
+        assertInstanceOf(Examen.class, model.getAttribute("examen"));
+    }
+
 
     @Test
     void testAgeMenorEdad(){
@@ -58,8 +69,10 @@ public class ExamenControllerTest {
         Model model = new ExtendedModelMap();
         Examen examen = new Examen(1, 10, 2, null);
         examen.setFechaNacimiento(fechaNacimiento);
+        Date today =  new Date();
+        today.getDate();
         Long age = 16L;
-        when(service.ageChecker(examen.getFechaNacimiento(), new Date())).thenReturn(age);
+        when(service.ageChecker(examen.getFechaNacimiento(), today)).thenReturn(age);
 
 //SALE MAL EL test, ya que se mete en la exception, porque el formato de la fecha o algo lo tengo mal
         assertNotNull(age);
@@ -78,8 +91,10 @@ public class ExamenControllerTest {
         Model model = new ExtendedModelMap();
         Examen examen = new Examen(1, 10, 2, null);
         examen.setFechaNacimiento(fechaNacimiento);
+        Date today = new Date();
+        today.getDate();
         Long age = 23L;
-        when(service.ageChecker(examen.getFechaNacimiento(), new Date())).thenReturn(age);
+        when(service.ageChecker(examen.getFechaNacimiento(), today)).thenReturn(age);
 
 //SALE MAL EL test, ya que se mete en la exception, porque el formato de la fecha o algo lo tengo mal
         assertNotNull(age);
@@ -98,8 +113,10 @@ public class ExamenControllerTest {
         Model model = new ExtendedModelMap();
         Examen examen = new Examen(1, 10, 2, null);
         examen.setFechaNacimiento(fechaNacimiento);
+        Date today = new Date();
+        today.getDate();
         Long age = 70L;
-        when(service.ageChecker(examen.getFechaNacimiento(), new Date())).thenReturn(age);
+        when(service.ageChecker(examen.getFechaNacimiento(), today)).thenReturn(age);
 
 //SALE MAL EL test, ya que se mete en la exception, porque el formato de la fecha o algo lo tengo mal
         assertNotNull(age);
@@ -128,6 +145,15 @@ public class ExamenControllerTest {
 
         String divisionPage = controller.division(examen, model);
         assertEquals("resultOperation", divisionPage);
+    }
+
+
+
+    @Test
+    void testIndex(){
+        Model model = new ExtendedModelMap();
+        String index = controller.index(model);
+        assertEquals("index", index);
     }
 
     @BeforeAll

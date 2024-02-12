@@ -19,6 +19,7 @@ public class ExamenService {
 		return years;
 	}
 
+
 	public Integer divisionChecker(Integer dividendo, Integer divisor) {
 		return dividendo / divisor;
 	}

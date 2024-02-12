@@ -21,6 +21,7 @@ class ExamenTest {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     Date fecha = sdf.parse("2021-10-10");
 
+
     ExamenTest() throws ParseException {
     }
 

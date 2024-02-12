@@ -72,6 +72,50 @@ public class ExamenControllerTest2 {
             e.printStackTrace();
             fail("no deberia lanzar excepcion");
         }
+
+
+    }
+
+    void testAgeGetAJob(){
+        MockHttpServletRequestBuilder requestBuilder = get("/age")
+                                                        .queryParam("fechaNacimiento","1990-01-01");
+        try{
+             MvcResult mvcResult = mockmvc.perform(requestBuilder).andExpect(status().isOk()).andReturn();
+             ModelAndView modelAndView =  mvcResult.getModelAndView();
+             assertEquals("getAJobNow",modelAndView.getViewName());
+
+        } catch (Exception e){
+            e.printStackTrace();
+            fail("no deberia lanzar excepcion");
+        }
+    }
+
+    void testAgeUnderAge(){
+        MockHttpServletRequestBuilder requestBuilder = get("/age")
+                                                        .queryParam("fechaNacimiento","2010-01-01");
+        try{
+             MvcResult mvcResult = mockmvc.perform(requestBuilder).andExpect(status().isOk()).andReturn();
+             ModelAndView modelAndView =  mvcResult.getModelAndView();
+             assertEquals("underAge",modelAndView.getViewName());
+
+        } catch (Exception e){
+            e.printStackTrace();
+            fail("no deberia lanzar excepcion");
+        }
+    }
+
+    void testAgeRetired(){
+        MockHttpServletRequestBuilder requestBuilder = get("/age")
+                                                        .queryParam("fechaNacimiento","1950-01-01");
+        try{
+             MvcResult mvcResult = mockmvc.perform(requestBuilder).andExpect(status().isOk()).andReturn();
+             ModelAndView modelAndView =  mvcResult.getModelAndView();
+             assertEquals("retired",modelAndView.getViewName());
+
+        } catch (Exception e){
+            e.printStackTrace();
+            fail("no deberia lanzar excepcion");
+        }
     }
     @BeforeAll
     static void setUpBeforeClass() throws Exception {
