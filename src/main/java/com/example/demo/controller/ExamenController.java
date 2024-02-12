@@ -71,4 +71,11 @@ public class ExamenController {
 		return "index";
 	}
 
+	public ExamenService getService() {
+		return service;
+	}
+
+	public void setService(ExamenService service) {
+		this.service = service;
+	}
 }
