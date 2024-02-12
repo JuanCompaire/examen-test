@@ -9,6 +9,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -45,14 +51,83 @@ public class ExamenControllerTest {
 
     }
 
+
     @Test
-    void testAge(){
+    void testAgeMenorEdad(){
+        Date fechaNacimiento = new Date(2005, 10, 10);
         Model model = new ExtendedModelMap();
-        Examen examen = new Examen();
+        Examen examen = new Examen(1, 10, 2, null);
+        examen.setFechaNacimiento(fechaNacimiento);
+        Long age = 16L;
+        when(service.ageChecker(examen.getFechaNacimiento(), new Date())).thenReturn(age);
 
-        String finPage = controller.age(examen, model);
-        assertEquals("error", finPage);
+//SALE MAL EL test, ya que se mete en la exception, porque el formato de la fecha o algo lo tengo mal
+        assertNotNull(age);
+        assertTrue(age < 18);
+        assertEquals(age,16L);
+        assertEquals(age,16);
+        System.out.println(age);
 
+        String agePage = controller.age(examen, model);
+        assertEquals("underAge", agePage);
+    }
+
+    @Test
+    void testAgeGetJob(){
+        Date fechaNacimiento = new Date(2000, 10, 10);
+        Model model = new ExtendedModelMap();
+        Examen examen = new Examen(1, 10, 2, null);
+        examen.setFechaNacimiento(fechaNacimiento);
+        Long age = 23L;
+        when(service.ageChecker(examen.getFechaNacimiento(), new Date())).thenReturn(age);
+
+//SALE MAL EL test, ya que se mete en la exception, porque el formato de la fecha o algo lo tengo mal
+        assertNotNull(age);
+        assertTrue(age > 18 && age < 67);
+        assertEquals(age,23L);
+        assertEquals(age,23);
+        System.out.println(age);
+
+        String agePage = controller.age(examen, model);
+        assertEquals("getAJobNow", agePage);
+    }
+
+    @Test
+    void testAgeRetired() {
+        Date fechaNacimiento = new Date(1950, 10, 10);
+        Model model = new ExtendedModelMap();
+        Examen examen = new Examen(1, 10, 2, null);
+        examen.setFechaNacimiento(fechaNacimiento);
+        Long age = 70L;
+        when(service.ageChecker(examen.getFechaNacimiento(), new Date())).thenReturn(age);
+
+//SALE MAL EL test, ya que se mete en la exception, porque el formato de la fecha o algo lo tengo mal
+        assertNotNull(age);
+        assertTrue(age > 67);
+        assertEquals(age,70L);
+        assertEquals(age,70);
+        System.out.println(age);
+
+        String agePage = controller.age(examen, model);
+        assertEquals("retired", agePage);
+    }
+
+    @Test
+    void testDivision(){
+
+        Model model = new ExtendedModelMap();
+        Examen examen = new Examen(1, 10, 2, null);
+        Integer result = 5;
+        when(service.divisionChecker(examen.getDividendo(), examen.getDivisor())).thenReturn(result);
+
+        assertNotNull(result);
+        assertInstanceOf(Integer.class, result);
+        assertNotNull(result);
+        assertEquals(5, result);
+        System.out.println(result);
+
+        String divisionPage = controller.division(examen, model);
+        assertEquals("resultOperation", divisionPage);
     }
 
     @BeforeAll
