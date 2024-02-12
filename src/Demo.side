@@ -1,0 +1,122 @@
+{
+  "id": "f68bda66-e6fb-457a-919d-6d6fa2adc532",
+  "version": "2.0",
+  "name": "Demo",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "2f716ed0-f173-4c67-afd5-14b31d94d6ff",
+    "name": "MakeDivisionTest",
+    "commands": [{
+      "id": "e91ab4cb-2115-4939-b8c5-f868f57dbe22",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "82630cb6-cbc3-4c37-9e13-e326849acd9e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "646x456",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a7586f23-cc8b-488b-af1c-4db2a6c15cf6",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Division checker",
+      "targets": [
+        ["linkText=Division checker", "linkText"],
+        ["css=a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Division checker')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/navigate?to=divisionChecker')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Division checker')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ce762727-0a52-460d-b9d4-f91783325e6b",
+      "comment": "",
+      "command": "click",
+      "target": "id=dividendo",
+      "targets": [
+        ["id=dividendo", "id"],
+        ["name=dividendo", "name"],
+        ["css=#dividendo", "css:finder"],
+        ["xpath=//input[@id='dividendo']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "770b78ab-3820-424e-8c7d-134b734fd826",
+      "comment": "",
+      "command": "type",
+      "target": "id=dividendo",
+      "targets": [
+        ["id=dividendo", "id"],
+        ["name=dividendo", "name"],
+        ["css=#dividendo", "css:finder"],
+        ["xpath=//input[@id='dividendo']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "10"
+    }, {
+      "id": "d7330db5-5b10-46f1-ac68-13714450bb53",
+      "comment": "",
+      "command": "click",
+      "target": "id=divisor",
+      "targets": [
+        ["id=divisor", "id"],
+        ["name=divisor", "name"],
+        ["css=#divisor", "css:finder"],
+        ["xpath=//input[@id='divisor']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aff98e0b-42f8-441a-af30-37c67af64307",
+      "comment": "",
+      "command": "type",
+      "target": "id=divisor",
+      "targets": [
+        ["id=divisor", "id"],
+        ["name=divisor", "name"],
+        ["css=#divisor", "css:finder"],
+        ["xpath=//input[@id='divisor']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "2"
+    }, {
+      "id": "a4c1aa2c-e7f3-4ac1-b4b7-b813e2d6c531",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(5)",
+      "targets": [
+        ["css=input:nth-child(5)", "css:finder"],
+        ["xpath=//input[@type='submit']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a610f519-a7d7-4b56-8203-a8f16b81e592",
+      "comment": "",
+      "command": "click",
+      "target": "css=html",
+      "targets": [
+        ["css=html", "css:finder"],
+        ["xpath=//html", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "06abf9a8-e252-4f87-a65e-ca88a319de77",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["2f716ed0-f173-4c67-afd5-14b31d94d6ff"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}
